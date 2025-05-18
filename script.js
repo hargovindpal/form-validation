@@ -8,7 +8,7 @@ function isMail(Email){
 
 }
 function isMobile(contact){
-    var mobileregExp = /^\+?[1-9][0-9]{7,14}$/;
+    var mobileregExp = /^\d{10}$/;
     return mobileregExp.test(contact);
 }
 
