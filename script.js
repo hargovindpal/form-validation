@@ -2,21 +2,33 @@ var missingField = "";
 var errorMessage = "";
 var successMessage = "";
 
+//Email Regular Expression
 function isMail(Email){
-    var regex = /[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+    var regex = /[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/; 
     return regex.test(Email);
 
 }
+
+// Mobile Number Regular Expression
 function isMobile(contact){
-    var mobileregExp = /^\d{10}$/;
+    var mobileregExp = /^\d{10}$/;  
     return mobileregExp.test(contact);
 }
 
+// Allow only digits and limit to 10
+$("#contact").on("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10); 
+});
+
+
+// Password Regular Expression
 function isPassword(password){
-    var passwordRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    var passwordRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;  
     return passwordRegExp.test(password);
 }
 
+
+// Check for Missing and Errors of from
 
 $("#submitBtn").click(function(){
 
@@ -33,7 +45,7 @@ $("#submitBtn").click(function(){
         $("#missingField").html(missingField);
     }
 
-
+// checking Email Field
     if($("#Email").val() ==""){
         missingField +="<p>Email not filled";
         $("#missingField").html(missingField);
@@ -44,7 +56,7 @@ $("#submitBtn").click(function(){
     }
 
 
-
+// checking Contact Field
     if($("#contact").val() ==""){
         missingField +="<p>Contact not filled</p>";
         $("#missingField").html(missingField);
@@ -56,7 +68,7 @@ $("#submitBtn").click(function(){
     }
 
 
-
+// checking Password Field
     if($("#password").val() ==""){
         missingField +="<p>Password not filled</p>";
         $("#missingField").html(missingField);
@@ -66,8 +78,7 @@ $("#submitBtn").click(function(){
         $("#missingField").html(missingField);
     }
 
-    
-    
+//Checking Confirm Password Field
     else if($("#password").val() != $("#confirmPassword").val()){
         errorMessage += "<p>Password is  not Matched with Confirm Password</p>";
         $("#errorMessage").html(errorMessage);
@@ -77,7 +88,7 @@ $("#submitBtn").click(function(){
         $("#errorMessage").html(errorMessage);
     }
 
-
+// Success Message
 if($("#errorMessage").html() ==="" && $("#missingField").html() === ""){
         successMessage="You are registered successfully";
         $("#successMessage").html(successMessage);
