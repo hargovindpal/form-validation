@@ -34,7 +34,7 @@ $("#submitBtn").click(function(){
 
     $("#missingField").html("");
     $("#errorMessage").html("");
-    $("#succesMessage").html("");
+    $("#successMessage").html("");
 
         missingField = "";
         errorMessage = "";
